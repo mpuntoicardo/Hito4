@@ -6,6 +6,6 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use('/book', bookRoutes);
+app.use('/', bookRoutes);
 
 module.exports = app;

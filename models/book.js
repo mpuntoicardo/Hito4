@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const bookSchema = new Schema({
   titulo: { type: String, required: true },
-  ISBN: { type: String, unique: true, required: true },
+  ISBN: { type: String, required: true },
   descripcion: { type: String, required: true },
   autor: { type: String, required: true },
   date: { type: Date, default: Date.now() },

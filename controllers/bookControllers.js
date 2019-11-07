@@ -13,7 +13,7 @@ function getBooks(req, res) {
 function getBook(req, res) {
   const { bookId } = req.params;
 
-  Book.findById(bookId, (error, book) => {
+  Book.findById({ bookId }, (error, book) => {
     if (error) return res.status(404).send({ message: 'No books found', error });
     return res.status(200).send(book);
   });
@@ -21,7 +21,7 @@ function getBook(req, res) {
 // by titulo
 function getBookTitulo(req, res) {
   const { titulo } = req.body;
-  Book.findOne(titulo, (error, book) => {
+  Book.findOne({ titulo }, (error, book) => {
     if (error) return res.status(404).send({ message: 'No book found', error });
     return res.status(200).send({ book });
   });
@@ -29,7 +29,7 @@ function getBookTitulo(req, res) {
 // by ISBN
 function getBookISBN(req, res) {
   const { ISBN } = req.body;
-  Book.findOne(ISBN, (error, book) => {
+  Book.findOne({ ISBN }, (error, book) => {
     if (error) return res.status(404).send({ message: 'No book found', error });
     return res.status(200).send({ book });
   });
@@ -37,7 +37,7 @@ function getBookISBN(req, res) {
 // by autor
 function getBookAutor(req, res) {
   const { autor } = req.body;
-  Book.findOne(autor, (error, book) => {
+  Book.findOne({ autor }, (error, book) => {
     if (error) return res.status(404).send({ message: 'No book found', error });
     return res.status(200).send({ book });
   });
@@ -45,7 +45,7 @@ function getBookAutor(req, res) {
 // by precio
 function getBookPrecio(req, res) {
   const { precio } = req.body;
-  Book.find(precio, (error, book) => {
+  Book.find({ precio }, (error, book) => {
     if (error) return res.status(404).send({ message: 'No book found', error });
     return res.status(200).send({ book });
   });
@@ -53,7 +53,7 @@ function getBookPrecio(req, res) {
 // By editorial
 function getBookEditorial(req, res) {
   const { editorial } = req.body;
-  Book.find(editorial, (error, book) => {
+  Book.find({ editorial }, (error, book) => {
     if (error) return res.status(404).send({ message: 'No book found', error });
     return res.status(200).send({ book });
   });
@@ -71,11 +71,11 @@ function replaceBook(req, res) {
   const { bookId } = req.params;
   const { titulo } = req.body;
   const { ISBN } = req.body;
-  const { description } = req.body;
+  const { descripcion } = req.body;
   const { autor } = req.body;
   const { precio } = req.body;
   const { editorial } = req.body;
-  if (!titulo || !description || !autor || !ISBN || !precio || !editorial) {
+  if (!titulo || !descripcion || !autor || !ISBN || !precio || !editorial) {
     return res.status(400).send({ message: 'Missing params' });
   }
 
